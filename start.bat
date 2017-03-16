@@ -1,0 +1,1 @@
+java -jar xfr-all-1.0.jar -i=C:\input -o=C:\output -e=C:\error -t=1000

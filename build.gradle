@@ -1,0 +1,37 @@
+
+group 'org.jobtest'
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+jar{
+    manifest {
+        attributes 'Main-Class': 'com.jobtest.xfr.Starter'
+    }
+
+    doFirst {
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    }
+}
+
+
+dependencies {
+    compile 'org.hibernate:hibernate-core:5.2.6.Final'
+//    compile 'org.hibernate:hibernate-c3p0:5.2.6.Final'
+    compile 'org.hibernate:hibernate-hikaricp:5.2.6.Final'
+    compile 'org.hibernate:hibernate-entitymanager:5.2.6.Final'
+    compile 'org.hibernate:hibernate-validator:5.3.4.Final'
+    compile 'org.postgresql:postgresql:9.4.1212'
+    compile 'log4j:log4j:1.2.17'
+    compile 'javax.el:el-api:2.2'
+    compile 'org.glassfish.web:javax.el:2.2.6'
+    compile 'com.google.inject:guice:4.1.0'
+    compile 'org.apache.commons:commons-pool2:2.4.2'
+    testCompile 'junit:junit:4.11'
+}
